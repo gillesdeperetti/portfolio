@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({
     origin: [
         "https://portfolio.sparkmind.me",
-        "https://gillesdeperetti.vercel.app"
+        "https://gilles-de-peretti-portfolio.onrender.com"
     ]
 }));
 app.use(json());
