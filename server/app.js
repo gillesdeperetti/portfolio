@@ -5,12 +5,7 @@ import nodemailer from 'nodemailer';
 
 const app = express();
 
-app.use(cors({
-    origin: [
-        "https://portfolio.sparkmind.me",
-        "https://gilles-de-peretti-portfolio.onrender.com"
-    ]
-}));
+app.use(cors());
 app.use(json());
 
 const transporter = nodemailer.createTransport({
@@ -26,7 +21,7 @@ const transporter = nodemailer.createTransport({
 app.post("/send-email", async (req, res) => {
     const { formData } = req.body;
 
-    console.log('Received form data:', formData); // Log form data for debugging
+    console.log('Received form data:', formData);
 
     try {
         let mailOptions = {
@@ -36,7 +31,7 @@ app.post("/send-email", async (req, res) => {
             text: `Sender's Email: ${formData.email}\n\n${formData.message}`
         };
 
-        console.log('Mail options:', mailOptions); // Log mail options for debugging
+        console.log('Mail options:', mailOptions);
 
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
