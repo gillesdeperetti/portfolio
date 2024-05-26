@@ -2,11 +2,16 @@ import cors from 'cors';
 import express, { json } from 'express';
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 const app = express();
 
 app.use(cors());
 app.use(json());
+
+// Servir les fichiers statiques de l'application front-end
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, 'dist')));
 
 const transporter = nodemailer.createTransport({
     host: "mail.gandi.net",
@@ -49,7 +54,12 @@ app.post("/send-email", async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 5000;
+// Toutes les autres requêtes renvoient le fichier index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
