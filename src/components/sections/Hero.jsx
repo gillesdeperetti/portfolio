@@ -36,7 +36,7 @@ const Hero = () => {
 
             <section ref={hero}>
                 <div
-                    className="relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8">
+                    className="relative z-10 max-w-screen-xl mx-auto px-6 py-28 md:px-8">
                     {/* Social Icon */}
                     <SocialMediaIcons />
 
@@ -46,12 +46,12 @@ const Hero = () => {
                             <div>
                                 <AnimatedTitle
                                     text={t(headlines[0])}
-                                    className="text-4xl font-extrabold mx-auto md:text-5xl text-primary-text"
+                                    className="text-3xl font-extrabold mx-auto md:text-5xl text-primary-text"
                                     color={true} />
 
                                 <AnimatedSubtitle
                                     text={t(headlines[1])}
-                                    className="text-secondary-text text-2xl md:text-3xl mx-auto font-bold break-words" />
+                                    className="text-secondary-text text-1xl md:text-3xl mx-auto font-bold break-words" />
                             </div>
                         </div>
 

@@ -33,7 +33,7 @@ const About = () => {
         <section className="mt-5 max-w-5xl mx-auto md:px-8" id="about">
             <SectionHeader title={t('about_me')} subtitle={t('skills_certifications_journey')} />
 
-            <div className="text-secondary-text md:flex flex-row gap-16 px-4 md:px-0" ref={ref}>
+            <div className="text-secondary-text md:flex flex-row gap-16 px-6 md:px-0" ref={ref}>
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
