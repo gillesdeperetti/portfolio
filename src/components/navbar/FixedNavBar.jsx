@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { fixedNavItems } from '../../utils';
+import { useTranslation } from 'react-i18next';
 import { Link, animateScroll } from 'react-scroll';
+import { fixedNavItems } from '../../utils';
 import logo from "../../assets/images/logo-spark-mind.webp";  
 
-
 const FixedNavBar = () => {
+    const { t } = useTranslation();
     const [state, setState] = useState(false);
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const FixedNavBar = () => {
                                         <li key={idx} className="text-gray-300 transition-li hover:transform-li text-base">
                                             <Link
                                                 to={
-                                                    navItem.name.toLocaleLowerCase()
+                                                    navItem.name.replace('nav_', '').toLocaleLowerCase()
                                                 }
                                                 smooth={true}
                                                 duration={500}
@@ -70,7 +71,7 @@ const FixedNavBar = () => {
                                                 offset={-50}
                                                 activeClass="active"
                                                 className="block cursor-pointer">
-                                                {navItem.name}
+                                                {t(navItem.name)}
                                             </Link>
                                         </li>
                                     )

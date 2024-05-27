@@ -8,8 +8,10 @@ import { SocialMediaIcons } from "../ui/SocialMediaIcons";
 import AnimatedSubtitle from "../text anim/AnimatedSubtitle";
 import AnimatedTitle from "../text anim/AnimatedTitle";
 import { animateScroll } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+    const { t } = useTranslation();
     const hero = useRef(null);
 
     const hoverHero = hover3d(hero, {
@@ -43,12 +45,12 @@ const Hero = () => {
                         <div className="flex justify-between">
                             <div>
                                 <AnimatedTitle
-                                    text={headlines[0]}
+                                    text={t(headlines[0])}
                                     className="text-4xl font-extrabold mx-auto md:text-5xl text-primary-text"
                                     color={true} />
 
                                 <AnimatedSubtitle
-                                    text={headlines[1]}
+                                    text={t(headlines[1])}
                                     className="text-secondary-text text-2xl md:text-3xl mx-auto font-bold break-words" />
                             </div>
                         </div>
@@ -63,11 +65,11 @@ const Hero = () => {
                                 },
                             }}
                             className="text-secondary-text text-xl pb-4">
-                            {headlines[2]}
+                            {t(headlines[2])}
                         </motion.p>
 
                         <CustomButton
-                            label={'Get in Touch'}
+                            label={t('get_in_touch')}
                             onClick={scrollToContact}
                             svg={
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -87,4 +89,4 @@ const Hero = () => {
     )
 }
 
-export default Hero
+export default Hero;

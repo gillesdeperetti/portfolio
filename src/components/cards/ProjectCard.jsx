@@ -1,11 +1,13 @@
 "use client";
 import React, { useRef } from "react";
+import { useTranslation } from 'react-i18next';
 import { CardBody, CardContainer, CardItem } from "../ui/3DCard";
 import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const ProjectCard = ({ project }) => {
+    const { t } = useTranslation();
     const ref = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -31,7 +33,7 @@ const ProjectCard = ({ project }) => {
                         translateZ="50"
                         className="block mb-2 text-xl font-semibold"
                     >
-                        {project.title}
+                        {t(project.title)}
                     </CardItem>
 
                     <CardItem
@@ -39,7 +41,7 @@ const ProjectCard = ({ project }) => {
                         translateZ="60"
                         className="text-secondary-text text-base max-w-sm mt-2 overflow-hidden text-ellipsis"
                     >
-                        {project.description}
+                        {t(project.description)}
                     </CardItem>
 
                     <CardItem translateZ="100" className="w-full mt-4 overflow-hidden">
@@ -53,7 +55,7 @@ const ProjectCard = ({ project }) => {
                     <div className="flex flex-wrap mt-4 gap-2">
                         {project.techStack.map((tech, idx) => (
                             <span key={idx} className="px-2 py-1 bg-gray-200 rounded text-sm text-secondary-text whitespace-nowrap">
-                                {tech}
+                                {t(tech)}
                             </span>
                         ))}
                     </div>
@@ -65,7 +67,7 @@ const ProjectCard = ({ project }) => {
                                 as="button"
                                 className="px-4 py-2 rounded-xl text-base text-secondary-text hover:text-secondary"
                             >
-                                <Link to={project.linkOnline}>Demo →</Link>
+                                <Link to={project.linkOnline}>{t('demo')} →</Link>
                             </CardItem>
                         }
 

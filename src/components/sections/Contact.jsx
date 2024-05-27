@@ -1,15 +1,17 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import { CustomButton } from "../buttons/CustomButton";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { FaMedium } from "react-icons/fa6";
 import { sendEmail } from "../../services/email";
-import { useState, useEffect } from "react";
 import SectionHeader from "../ui/SectionHeader";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 import Toast from "../ui/Toast";
 
 const Contact = () => {
+    const { t } = useTranslation();
     const [alert, setAlert] = useState('');
     const control = useAnimation();
     const [ref, inView] = useInView();
@@ -42,7 +44,7 @@ const Contact = () => {
         event.preventDefault();
 
         if (!formData.email || !formData.subject || !formData.message) {
-            setAlert('Please fill in all fields.');
+            setAlert(t('please_fill_in_all_fields'));
             setTimeout(() => {
                 setAlert('');
             }, 3000);
@@ -51,12 +53,12 @@ const Contact = () => {
 
         try {
             const response = await sendEmail(formData);
-            setAlert(response);
-            if (response === "Message sent successfully.") {
+            setAlert(t(response));
+            if (response === "message_sent_successfully") {
                 setFormData({ email: '', subject: '', message: '' });
             }
         } catch (error) {
-            setAlert('Error sending message. Please try again later.');
+            setAlert(t('error_sending_message'));
         }
 
         setTimeout(() => {
@@ -66,7 +68,7 @@ const Contact = () => {
 
     return (
         <section className="mt-5 max-w-6xl mx-auto md:px-8 pb-28" id="contact">
-            <SectionHeader title={"Contact."} subtitle={"Let's Connect"} />
+            <SectionHeader title={t('contact')} />
 
             <div className="flex items-stretch justify-center" ref={ref}>
                 <motion.div
@@ -76,7 +78,7 @@ const Contact = () => {
                     className="grid md:grid-cols-2 px-5 md:px-0">
                     <div className="pr-6">
                         <p className="mt-3 mb-12 text-base text-secondary-text text-center md:text-left">
-                            I'd love to hear from you! Whether you have a job opportunity, project inquiry, collaboration idea, or just want to chat, feel free to reach out.
+                            {t('contact_description')}
                         </p>
 
                         <ul className="mb-6 md:mb-0">
@@ -89,10 +91,10 @@ const Contact = () => {
 
                                         <div className="ml-4">
                                             <h3 className="mb-2 text-lg font-medium leading-6 text-primary-text">
-                                                {item.title}
+                                                {t(item.title)}
                                             </h3>
                                             <p className="text-secondary-text">
-                                                {item.info}
+                                                {t(item.info)}
                                             </p>
                                         </div>
                                     </li>
@@ -110,7 +112,7 @@ const Contact = () => {
                             <label
                                 htmlFor="email"
                                 className="block mb-2 text-base font-medium text-secondary-text">
-                                Your Email
+                                {t('your_email')}
                             </label>
 
                             <input
@@ -118,7 +120,7 @@ const Contact = () => {
                                 id="email"
                                 name="email"
                                 className="shadow-sm bg-third border border-third text-primary-text text-base rounded-lg focus:ring-primary-500 block w-full p-2.5 placeholder-secondary-text focus:outline-none focus:ring-2 focus:border-secondary" 
-                                placeholder="you@example.com"
+                                placeholder={t('format_email')}
                                 required
                                 value={formData.email}
                                 onChange={handleChange} />
@@ -130,7 +132,7 @@ const Contact = () => {
                                 htmlFor="subject"
                                 className="block mb-2 text-base font-medium text-secondary-text"
                             >
-                                Subject
+                                {t('subject')}
                             </label>
 
                             <input
@@ -138,7 +140,7 @@ const Contact = () => {
                                 id="subject"
                                 name="subject"
                                 className="block p-3 w-full text-base text-primary-text bg-third rounded-lg border border-third shadow-sm placeholder-secondary-text focus:outline-none focus:ring-2 focus:border-secondary"
-                                placeholder="What's the topic?"
+                                placeholder={t('subject_placeholder')}
                                 required
                                 value={formData.subject}
                                 onChange={handleChange} />
@@ -150,7 +152,7 @@ const Contact = () => {
                                 htmlFor="message"
                                 className="block mb-2 text-base font-medium text-secondary-text"
                             >
-                                Message
+                                {t('message')}
                             </label>
 
                             <textarea
@@ -158,7 +160,7 @@ const Contact = () => {
                                 name="message"
                                 rows="6"
                                 className="block p-2.5 w-full text-base text-primary-text bg-third rounded-lg shadow-sm border border-third placeholder-secondary-text focus:outline-none focus:ring-2 focus:border-secondary"
-                                placeholder="Write your message..."
+                                placeholder={t('message_placeholder')}
                                 value={formData.message}
                                 onChange={handleChange}
                                 required >
@@ -166,7 +168,7 @@ const Contact = () => {
                         </div>
 
                         <CustomButton
-                            label={'Send Message'}
+                            label={t('send_message')}
                             type="submit"
                         />
                     </form>
@@ -178,21 +180,21 @@ const Contact = () => {
 
 const contactData = [
     {
-        title: "LinkedIn",
+        title: "linkedin",
         icon: <FaLinkedin size={24} />,
-        info: "Connect with me",
+        info: "connect_with_me",
         path: "https://www.linkedin.com/in/gillesdeperetti/"
     },
     {
-        title: "GitHub",
+        title: "github",
         icon: <FaGithub size={24} />,
-        info: "Explore my projects",
+        info: "explore_my_projects",
         path: "https://github.com/gillesdeperetti"
     },
     {
-        title: "Medium",
+        title: "medium",
         icon: <FaMedium size={24} />,
-        info: "Read my articles",
+        info: "read_my_articles",
         path: "https://medium.com/@gillesdeperetti"
     },
 ];

@@ -20,6 +20,9 @@ img{
     width: 100%;
 }
 
+.highlight {
+  color: #326DFD; /* Ajustez cette couleur selon vos besoins */
+}
 
 @layer components {
 }

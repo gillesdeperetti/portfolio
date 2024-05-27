@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
     motion,
     AnimatePresence,
@@ -8,8 +9,10 @@ import { IconHome, IconUser, IconArticle, IconPrompt } from "@tabler/icons-react
 import { Link, animateScroll } from 'react-scroll';
 
 export const FloatingNavBar = ({ className, visible }) => {
+    const { t } = useTranslation();
+
     const scrollToTop = (navItem) => {
-        if (navItem.name === 'home') {
+        if (navItem.name === 'nav_home') {
             animateScroll.scrollToTop();
         }
     };
@@ -33,21 +36,19 @@ export const FloatingNavBar = ({ className, visible }) => {
                 {floatingNavItems.map((navItem, idx) => (
                     <Link
                         to={
-                            navItem.name.toLocaleLowerCase()
+                            navItem.name.replace('nav_', '').toLocaleLowerCase()
                         }
                         smooth={true}
                         duration={500}
                         spy={true}
                         offset={-50}
                         activeClass="active"
-                        onClick={
-                            scrollToTop
-                        }
+                        onClick={() => scrollToTop(navItem)}
                         key={`link=${idx}`}
                         className={`relative items-center flex space-x-1 text-neutral-600 transition-li hover:transform-li cursor-pointer ${className}`}
                     >
                         <span className="block sm:hidden">{navItem.icon}</span>
-                        <span className="hidden sm:block text-sm md:text-base">{navItem.name}</span>
+                        <span className="hidden sm:block text-sm md:text-base">{t(navItem.name)}</span>
                     </Link>
                 ))}
                 <Link
@@ -58,7 +59,7 @@ export const FloatingNavBar = ({ className, visible }) => {
                     offset={-50}
                     activeClass="active"
                     className="border text-sm md:text-base font-medium relative border-neutral-200 text-primary  px-4 py-2 rounded-full cursor-pointer">
-                    <span>Contact</span>
+                    <span>{t('nav_contact')}</span>
                     <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-secondary to-transparent  h-px" />
                 </Link>
             </motion.div>
@@ -68,25 +69,25 @@ export const FloatingNavBar = ({ className, visible }) => {
 
 const floatingNavItems = [
     {
-        name: "Home",
+        name: "nav_home",
         icon: (
             <IconHome className="h-4 w-4 fill-white hover:fill-secondary" activeclass="active" />
         ),
     },
     {
-        name: "About",
+        name: "nav_about",
         icon: (
             <IconUser className="h-4 w-4 fill-white hover:fill-secondary" activeclass="active" />
         ),
     },
     {
-        name: "Projects",
+        name: "nav_projects",
         icon: (
             <IconPrompt className="h-4 w-4 fill-white hover:fill-secondary" activeclass="active" />
         ),
     },
     {
-        name: "Blog",
+        name: "nav_blog",
         icon: (
             <IconArticle className="h-4 w-4 fill-white hover:fill-secondary" activeclass="active" />
         ),
