@@ -6,8 +6,7 @@ const AnimatedSubtitle = ({ text, className }) => {
     const { i18n } = useTranslation();
     const letters = Array.from(text);
 
-    // Définir l'index de changement de couleur en fonction de la langue
-    const colorChangeIndex = i18n.language === 'fr' ? 7 : 6; // 'Je suis' : 7, 'I'm a ' : 6
+    const colorChangeIndex = i18n.language.startsWith('fr') ? 7 : 6; 
 
     const container = {
         hidden: { opacity: 0 },
