@@ -27,7 +27,7 @@ export const GoogleGeminiEffect = ({
   const { t } = useTranslation();
 
   return (
-    <div className={cn("sticky top-40", className)}>
+    <div className={cn("sticky top-40 px-4", className)}>
       <motion.p
         className="text-4xl font-extrabold mx-auto md:text-5xl text-primary-text text-center bg-clip-text"
         style={{ opacity: textOpacity }}
