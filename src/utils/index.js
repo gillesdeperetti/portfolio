@@ -138,9 +138,38 @@ export const articles = [
 
 
 export const metadata = {
-    title: "Gilles de PERETTI - Machine Learning Engineer",
-    description: "This portfolio is a collection of my work that showcases my skills and creativity.",
-    imageURL: "../assets/images/logo-spark-mind.webp",
-    pageUrl: "#" 
-};
-
+    site: {
+      title: "Gilles de PERETTI - Machine Learning Engineer",
+      description: "This portfolio showcases the work of Gilles de PERETTI, a Machine Learning Engineer with expertise in Data Science, MLOps, and Data Product Management.",
+      imageURL: "../assets/images/portfolio-banner.png",
+      pageUrl: "https://portfolio.sparkmind.me"
+    },
+    sections: {
+      home: {
+        title: "Home - Gilles de PERETTI",
+        description: "Welcome to the portfolio of Gilles de PERETTI, a Machine Learning Engineer showcasing skills and projects in AI and data science.",
+        imageURL: "../assets/images/portfolio-banner.png"
+      },
+      about: {
+        title: "About - Gilles de PERETTI",
+        description: "Learn more about Gilles de PERETTI, a Machine Learning Engineer with extensive experience in Data Science, MLOps, and Data Product Management.",
+        imageURL: "../assets/images/portfolio-banner.png"
+      },
+      projects: {
+        title: "Projects - Gilles de PERETTI",
+        description: "Explore the projects and case studies by Gilles de PERETTI, demonstrating expertise in machine learning and data science.",
+        imageURL: "../assets/images/portfolio-banner.png"
+      },
+      blog: {
+        title: "Blog - Gilles de PERETTI",
+        description: "Read articles, tutorials, and reflections on AI, data science and more by Gilles de PERETTI.",
+        imageURL: "../assets/images/portfolio-banner.png"
+      },
+      contact: {
+        title: "Contact - Gilles de PERETTI",
+        description: "Get in touch with Gilles de PERETTI for collaboration opportunities and professional inquiries in the field of AI and data science.",
+        imageURL: "../assets/images/portfolio-banner.png"
+      }
+    }
+  };
+  
