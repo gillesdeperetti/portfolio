@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 
 const Main = () => {
   const { lng } = useParams();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState('home');
 
@@ -34,11 +34,18 @@ const Main = () => {
     const sections = document.querySelectorAll("section");
     const scrollPos = window.scrollY + window.innerHeight / 2;
     
+    let found = false;
+
     sections.forEach(section => {
       if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
         setCurrentSection(section.getAttribute('id'));
+        found = true;
       }
     });
+
+    if (!found) {
+      setCurrentSection('home');
+    }
   };
 
   useEffect(() => {
@@ -46,15 +53,18 @@ const Main = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const defaultTitle = t('page_meta.site.title');
+  const defaultDescription = t('page_meta.site.description');
+
   return (
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{metadata.sections[currentSection]?.title || metadata.site.title}</title>
+        <title>{t(`page_meta.${currentSection}.title`, { defaultValue: defaultTitle })}</title>
         <link rel="canonical" href={metadata.site.pageUrl} />
-        <meta name="description" content={metadata.sections[currentSection]?.description || metadata.site.description} />
-        <meta property="og:title" content={metadata.sections[currentSection]?.title || metadata.site.title} />
-        <meta property="og:description" content={metadata.sections[currentSection]?.description || metadata.site.description} />
+        <meta name="description" content={t(`page_meta.${currentSection}.description`, { defaultValue: defaultDescription })} />
+        <meta property="og:title" content={t(`page_meta.${currentSection}.title`, { defaultValue: defaultTitle })} />
+        <meta property="og:description" content={t(`page_meta.${currentSection}.description`, { defaultValue: defaultDescription })} />
         <meta property="og:image" content={metadata.sections[currentSection]?.imageURL || metadata.site.imageURL} />
         <meta property="og:url" content={metadata.site.pageUrl} />
         <meta property="og:type" content="website" />
@@ -62,11 +72,11 @@ const Main = () => {
         <link rel="alternate" href="https://portfolio.sparkmind.me/fr" hreflang="fr" />
       </Helmet>
 
-      <section id="home"><Hero /></section>
-      <section id="about"><About /></section>
-      <section id="projects"><GeminiEffect /><Projects /></section>
-      <section id="blog"><Blog /></section>
-      <section id="contact"><Contact /></section>
+      <section id="home"><Hero title={t('home.title')} description={t('home.description')} /></section>
+      <section id="about"><About title={t('about.title')} description={t('about.description')} /></section>
+      <section id="projects"><GeminiEffect /><Projects title={t('projects.title')} description={t('projects.description')} /></section>
+      <section id="blog"><Blog title={t('blog.title')} description={t('blog.description')} /></section>
+      <section id="contact"><Contact title={t('contact.title')} description={t('contact.description')} /></section>
       <Footer />
       <Analytics />
       <FloatingLanguageSelector onLanguageChange={handleLanguageChange} />

@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    whitelist: ['en', 'fr'], 
+    whitelist: ['en', 'fr'],
     detection: {
       order: ['queryString', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag'],
       caches: ['cookie'],
@@ -26,6 +26,26 @@ i18n
     react: {
       useSuspense: false,
     },
+  }, () => {
+    updateMetaTags();
+
+    i18n.on('languageChanged', () => {
+      updateMetaTags();
+    });
+
+    function updateMetaTags() {
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const translatedText = i18n.t(key);
+        if (element.tagName === 'TITLE') {
+          document.title = translatedText;
+        } else if (element.hasAttribute('content')) {
+          element.setAttribute('content', translatedText);
+        } else {
+          element.innerText = translatedText;
+        }
+      });
+    }
   });
 
 export default i18n;

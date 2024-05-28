@@ -85,5 +85,32 @@
     "ouroboros_ai": "Ouroboros de l'IA : Le danger des modèles génératifs se nourrissant de leurs propres créations",
     "ouroboros_ai_resume": "Les modèles génératifs consommant leurs propres créations peuvent entraîner des problèmes significatifs. Explorez les implications de l'IA apprenant d'elle-même et les solutions potentielles.",
     "data_scaling_transformation": "Mise à l'échelle et transformation des données : Clés de la science des données efficace",
-    "data_scaling_transformation_resume": "Transformer les données brutes en informations exploitables est crucial en science des données. Apprenez les concepts essentiels de la normalisation et de la standardisation, et leur rôle dans une transformation des données efficace."
-}
+    "data_scaling_transformation_resume": "Transformer les données brutes en informations exploitables est crucial en science des données. Apprenez les concepts essentiels de la normalisation et de la standardisation, et leur rôle dans une transformation des données efficace.",
+    "page_meta": {
+      "site": {
+        "title": "Gilles de PERETTI - Machine Learning Engineer",
+        "description": "Bienvenue sur mon portfolio. Je suis Gilles de PERETTI, un Machine Learning Engineer spécialisé en Data Science, MLOps et Data Product Management. Ce portfolio présente mon travail et mes compétences."
+      },
+      "home": {
+        "title": "Gilles de PERETTI - Machine Learning Engineer",
+        "description": "Bienvenue sur mon portfolio. Je suis Gilles de PERETTI, un Machine Learning Engineer présentant mes compétences et projets en IA et science des données."
+      },
+      "about": {
+        "title": "À propos - Gilles de PERETTI",
+        "description": "En savoir plus sur moi, Gilles de PERETTI. Je suis un Machine Learning Engineer avec une vaste expérience en Data Science, MLOps et Data Product Management."
+      },
+      "projects": {
+        "title": "Projets - Gilles de PERETTI",
+        "description": "Explorez mes projets et études de cas, démontrant mon expertise en apprentissage automatique et science des données."
+      },
+      "blog": {
+        "title": "Blog - Gilles de PERETTI",
+        "description": "Lisez mes articles, tutoriels et réflexions sur l'IA, la science des données et plus encore. Restez informé des dernières nouveautés dans le domaine grâce à mon blog."
+      },
+      "contact": {
+        "title": "Contact - Gilles de PERETTI",
+        "description": "Contactez-moi pour des opportunités de collaboration et des demandes professionnelles dans le domaine de l'IA et de la science des données."
+      }
+    }
+  }
+    
