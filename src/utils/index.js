@@ -110,7 +110,7 @@ export const certifications = [
     { title: "Data Scientist", school: "DataScientest x Mines ParisTech", link: "https://files.datascientest.com/diploma/8aa8a81e-5188-4754-9043-130c934d2be1.pdf" },
     { title: "Machine Learning Engineer", school: "DataScientest", link: "https://files.datascientest.com/diploma/d4c6f0fa-8e3e-43af-aeb3-44cd0870e2ed.pdf" },
     { title: "Data Product Manager", school: "DataScientest", link: "https://files.datascientest.com/diploma/525f44a3-36c2-4213-b086-5f0d722cac04.pdf" },
-    { title: "AWS Certified Cloud Practitioner Certification", school: "AWS Training and Certification", link: "https://www.credly.com/badges/31b15342-1686-42a1-a9f0-ae052b0a4fb0/public_url" },
+    { title: "AWS Certified Cloud Practitioner", school: "AWS Training and Certification", link: "https://www.credly.com/badges/31b15342-1686-42a1-a9f0-ae052b0a4fb0/public_url" },
 
 ];
 
